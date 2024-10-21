@@ -2,6 +2,11 @@
     <cly-header
         :title="i18n('errorlogs.title')"
     >
+        <template v-slot:header-right>
+            <el-button @click="clickety" type="success" size="small" icon="el-icon-circle-plus">
+                Clickety
+            </el-button>
+        </template>
     </cly-header>
     <cly-main>
         <cly-section>
@@ -25,4 +30,5 @@
 
         </cly-section>
     </cly-main>
+    <component v-if="assistantPromptDrawer && assistantPromptDrawer.length > 0" :is="assistantPromptDrawer[0].component" :settings="assistantPromptDrawerSettings" :controls="drawers['assistant-prompt']"></component>
 </div>

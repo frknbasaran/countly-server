@@ -8,7 +8,8 @@
                 selectLog: this.query || "api",
                 downloadLink: countlyGlobal.path + "/o/errorlogs?auth_token=" + countlyGlobal.auth_token + "&download=true&log=" + this.query || "api",
                 logList: [{name: "Api Log", value: "api"}],
-                cachedLog: {}
+                cachedLog: {},
+                assistantPromptDrawerSettings: {},
             };
         },
         props: {
@@ -16,6 +17,11 @@
                 default: "api"
             }
         },
+        mixins: [
+            // include user edit drawer from user-management
+            countlyVue.container.dataMixin({assistantPromptDrawer: 'assistant/prompt-drawer'}),
+            countlyVue.mixins.hasDrawers(['assistant-prompt'])
+        ],
         created: function() {
             var self = this;
             return $.when(countlyErrorLogs.initialize(), countlyErrorLogs.getLogByName(this.query || "api"))
@@ -25,6 +31,9 @@
                 });
         },
         methods: {
+            clickety: function() {
+                this.openDrawer('assistant-prompt', {});
+            },
             refresh: function(force) {
                 var self = this;
                 if (force) {

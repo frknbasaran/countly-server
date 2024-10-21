@@ -243,6 +243,18 @@
         }]
     });
 
+    var Drawer = countlyVue.views.create({
+        template: CV.T('/logger/templates/drawer.html'),
+        props: {
+            settings: Object,
+            controls: Object,
+        },
+    });
+
+    countlyVue.container.registerData('assistant/prompt-drawer', {
+        component: Drawer,
+    });
+
     app.logger = logger;
 
     app.route('/manage/logger', 'logger', function() {
