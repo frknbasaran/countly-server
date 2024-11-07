@@ -815,7 +815,24 @@
                     target_page: false,
                     logoType: logoType,
                     globalLogo: globalLogo,
-                    internalName: ''
+                    internalName: '',
+                    links: {
+                        link: [
+                            {
+                                text: 'Terms and Conditions',
+                                link: 'https://termsandconditions.com',
+                                textValue: 'Terms and Conditions',
+                                linkValue: 'https://termsandconditions.com'
+                            },
+                            {
+                                text: 'Privacy Policy',
+                                link: 'https://privacyPolicy.com',
+                                textValue: 'Privacy Policy',
+                                linkValue: 'https://privacyPolicy.com'
+                            }
+                        ],
+                        finalText: 'I agree to the Terms and Conditions and Privacy Policy.',
+                    },
                 });
             },
             refresh: function(force) {
